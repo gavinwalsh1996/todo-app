@@ -7,12 +7,11 @@ interface ButtonProps {
 export default function Button({ text, icon: Icon, onClick }: ButtonProps) {
   return (
     <button
-      className=" p-2 bg-gray-400 rounded cursor-pointer hover:bg-gray-200 flex items-center gap-2"
+      className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-200"
       onClick={onClick}
     >
-      {text}
-      {Icon && <Icon size={15} className="cursor-pointer" />}{" "}
-      {/* Only render icon if it's available */}
+      {Icon && <Icon size={18} />}
+      {text && <span className="font-medium">{text}</span>}
     </button>
   );
 }

@@ -9,16 +9,23 @@ interface TaskProps {
 
 export default function Tasks({ tasks, onDeleteTask }: TaskProps) {
   return (
-    <div className="bg-gray-100 flex flex-col gap-6 w-full">
-      {tasks.map((task, index) => (
-        <div className="flex justify-between items-center p-2 bg-blue-200">
-          <div>{task}</div>
-          <div className="flex gap-2">
-            <Button icon={Pencil} />
-            <Button icon={Trash2} onClick={() => onDeleteTask(index)} />
+    <div className="flex flex-col gap-4 w-full mt-4">
+      {tasks.length === 0 ? (
+        <p className="text-gray-500 text-center italic">No tasks added yet.</p>
+      ) : (
+        tasks.map((task, index) => (
+          <div
+            key={index}
+            className="flex justify-between items-center bg-white shadow-md rounded-lg p-4"
+          >
+            <span className="text-gray-800 font-medium">{task}</span>
+            <div className="flex gap-3">
+              <Button icon={Pencil} />
+              <Button icon={Trash2} onClick={() => onDeleteTask(index)} />
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
