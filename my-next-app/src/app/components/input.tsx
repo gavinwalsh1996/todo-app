@@ -5,10 +5,11 @@ interface InputProps {
   text: string | number;
   value: string | number;
   onInputChange: (newText: string) => void;
+  onSubmit: () => void;
 }
 
-export default function Input({ value, onInputChange }: InputProps) {
-  const handletextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+export default function Input({ value, onInputChange, onSubmit }: InputProps) {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputChange(e.target.value);
   };
   return (
@@ -20,9 +21,9 @@ export default function Input({ value, onInputChange }: InputProps) {
           placeholder="enter text"
           className="border"
           value={value}
-          onChange={handletextChange}
+          onChange={handleTextChange}
         ></input>
-        <Button text="submit" icon={Plus} />
+        <Button text="submit" icon={Plus} onClick={onSubmit} />
       </div>
     </div>
   );
